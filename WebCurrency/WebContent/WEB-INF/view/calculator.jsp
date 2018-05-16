@@ -18,28 +18,8 @@
 			</ul>
 		</div>
 		<div class="content">
-		<br>
-		<br>
-		<h3>Witam w systemie UMOWA 5000</h3>
-		<br>
-		<br>
-		<h4>START</h4>
-		<ul>
-			<li><a href="/Umowy/contracts?filtr=wszystkie">UMOWY</a></li>
-				<ul>
-					<li><a href="/Umowy/contracts?filtr=aktywne">AKTYWNE</a></li>
-					<li><a href="/Umowy/contracts?filtr=wszystkie">WSZYSTKIE</a></li>
-					<li><a href="/Umowy/newContract">NOWA</a></li>
-					<li><a href="/Umowy/import">IMPORT</a></li>
-				</ul>
-			<li><a href="/Umowy/systems">SYSTEMY</a></li>
-				<ul>
-					<li><a href="/Umowy/newSystem">NOWY</a></li>
-				</ul>
-			<li><a href="/Umowy/about">O APLIKACJI</a></li>
-		</ul>
-		<br>
-		<br>
+
+
 		</div>
 		<div class="footer">
 			&copy; Copyright 2018
