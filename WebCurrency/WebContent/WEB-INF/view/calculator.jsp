@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,8 +19,32 @@
 			</ul>
 		</div>
 		<div class="content">
-
-
+		<table class="table table-striped">
+		<tr>
+			<td>
+			<input type="text" name="setAmount" size="10">
+			</td>
+			<td>
+			<select name="setCurrencyFrom">
+				<option value="">----------------</option>
+				<c:forEach var="currency" items="${currencies }">
+					<option value="${currency.currencyName }">${currency.currencyName }</option>
+				</c:forEach>
+			</select>
+			</td>
+			<td>
+				<p> >> </p>
+			</td>
+			<td>
+			<select name="setCurrencyTo">
+				<option value="">----------------</option>
+				<c:forEach var="currency" items="${currencies }">
+					<option value="${currency.currencyName }">${currency.currencyName }</option>
+				</c:forEach>
+			</select>
+			</td>
+		</tr>
+		</table>
 		</div>
 		<div class="footer">
 			&copy; Copyright 2018
