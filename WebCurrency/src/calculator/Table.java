@@ -5,6 +5,11 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
+import calculator.Currency;
+
+	//TODO
+	// Change getters ands setters for Map
+
 public class Table {
 
 	private String tableNumber;
@@ -37,6 +42,10 @@ public class Table {
 	
 	public void addCurrency(Currency currency) {
 		currencies.put(currency.getCurrencyCode(), currency);
+	}
+	
+	public Currency findCurrency(String code) {
+		return currencies.get(code);
 	}
 	
 	public Collection<Currency> getAllCurrencies() {

@@ -19,32 +19,37 @@
 			</ul>
 		</div>
 		<div class="content">
-		<table class="table table-striped">
-		<tr>
-			<td>
-			<input type="text" name="setAmount" size="10">
-			</td>
-			<td>
-			<select name="setCurrencyFrom">
-				<option value="">----------------</option>
-				<c:forEach var="currency" items="${currencies }">
-					<option value="${currency.currencyName }">${currency.currencyName }</option>
-				</c:forEach>
-			</select>
-			</td>
-			<td>
-				<p> >> </p>
-			</td>
-			<td>
-			<select name="setCurrencyTo">
-				<option value="">----------------</option>
-				<c:forEach var="currency" items="${currencies }">
-					<option value="${currency.currencyName }">${currency.currencyName }</option>
-				</c:forEach>
-			</select>
-			</td>
-		</tr>
-		</table>
+		<form method="post">
+			<table class="table table-striped">
+			<tr>
+				<td>
+				<input type="text" name="setAmount" size="10">
+				</td>
+				<td>
+				<select name="setCurrencyFrom">
+					<option value="">----------------</option>
+					<c:forEach var="currency" items="${currencies }">
+						<option value="${currency.currencyCode }">${currency.currencyName }</option>
+					</c:forEach>
+				</select>
+				</td>
+				<td>
+					<p> >> </p>
+				</td>
+				<td>
+				<select name="setCurrencyTo">
+					<option value="">----------------</option>
+					<c:forEach var="currency" items="${currencies }">
+						<option value="${currency.currencyCode }">${currency.currencyName }</option>
+					</c:forEach>
+				</select>
+				</td>
+			</tr>
+			</table>
+			<input type="submit" value="Oblicz" class="btn">
+		</form>
+		<br>
+		<h4>${amount }</h4>
 		</div>
 		<div class="footer">
 			&copy; Copyright 2018

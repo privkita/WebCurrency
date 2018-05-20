@@ -1,12 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,19 +31,10 @@ public class CalculatorServlet extends HttpServlet {
 		
 		TableDao tableDao = new TableDao();
 		Table currenciesTable = tableDao.getRates(LocalDate.now().toString());
-		// Map<String, Currency> currencies = table.getCurrencies();
-		// ArrayList<Currency> currencies = (ArrayList<Currency>) table.getAllCurrencies();
+
 		Collection<Currency> currencies = currenciesTable.getAllCurrencies();
 		
-		System.out.println("wypisujemy waluty");
-		System.out.println("ilość walut: " + currencies.size());
-		for (Currency currency : currencies) {
-			System.out.println(currency.getCurrencyName());
-		}
-		
 		request.setAttribute("currencies", currencies);
-
-		
 		request.getRequestDispatcher("WEB-INF/view/calculator.jsp").forward(request, response);
 	}
 
@@ -55,7 +44,22 @@ public class CalculatorServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		//TODO
+		// Exceptions
+		
+		TableDao tableDao = new TableDao();
+		Table currenciesTable = tableDao.getRates(LocalDate.now().toString());
+		Currency currencyFrom = currenciesTable.findCurrency(request.getParameter("setCurrencyFrom"));
+		Currency currencyTo = currenciesTable.findCurrency(request.getParameter("setCurrencyTo"));
+		BigDecimal amount = new BigDecimal(request.getParameter("setAmount"))
+				.multiply(currencyFrom.getCurrencyRate()
+						.divide(currencyTo.getCurrencyRate(), 4, RoundingMode.HALF_UP));
+		
+		request.setAttribute("amount", amount);
 		doGet(request, response);
 	}
 
